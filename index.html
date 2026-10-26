@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RpMedX - Bangladesh Medicine & Drug Reference Guide</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <!-- Google Fonts (Inter & Hind Siliguri for Bangla) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0284c7',
+              600: '#0369a1',
+              700: '#0284c7',
+              800: '#075985',
+              900: '#0c4a6e',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'Hind Siliguri', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    body {
+      font-family: 'Inter', 'Hind Siliguri', sans-serif;
+      background-color: #f8fafc;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    .logo-container {
+      filter: drop-shadow(0px 8px 12px rgba(2, 132, 199, 0.25));
+      transition: transform 0.3s ease;
+    }
+    .logo-container:hover {
+      transform: translateY(-2px) scale(1.03);
+    }
+  </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col">
+
+  <!-- HEADER / NAVBAR -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 gap-4">
+        
+        <!-- Logo -->
+        <div class="flex items-center space-x-3 cursor-pointer logo-container" onclick="switchTab('search-section')">
+          <div class="w-16 h-16 flex items-center justify-center shrink-0">
+            <svg viewBox="0 0 240 240" class="w-full h-full overflow-visible">
+              <defs>
+                <linearGradient id="capCyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#38bdf8" />
+                  <stop offset="50%" stop-color="#0284c7" />
+                  <stop offset="100%" stop-color="#0369a1" />
+                </linearGradient>
+                <linearGradient id="capDeepBlueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0284c7" />
+                  <stop offset="60%" stop-color="#1e40af" />
+                  <stop offset="100%" stop-color="#1e3a8a" />
+                </linearGradient>
+                <linearGradient id="metalCyanGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#00d2ff" />
+                  <stop offset="50%" stop-color="#0077ff" />
+                  <stop offset="100%" stop-color="#0044b3" />
+                </linearGradient>
+                <linearGradient id="glossHighlight" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ffffff" stop-opacity="0.75" />
+                  <stop offset="40%" stop-color="#ffffff" stop-opacity="0.1" />
+                  <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+                </linearGradient>
+                <filter id="shadow3d" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#0284c7" flood-opacity="0.3" />
+                </filter>
+                <filter id="pillShadow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feDropShadow dx="3" dy="10" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.25" />
+                </filter>
+              </defs>
+              <g filter="url(#shadow3d)">
+                <g transform="translate(18, 92) rotate(-34 40 65)" filter="url(#pillShadow)">
+                  <path d="M 5,60 L 5,28 A 28,28 0 0,1 61,28 L 61,60 Z" fill="url(#capCyanGrad)" stroke="#ffffff" stroke-width="2.5" />
+                  <path d="M 10,24 A 20,20 0 0,1 56,24 L 56,38 C 30,38 15,28 10,24 Z" fill="url(#glossHighlight)" />
+                  <path d="M 5,60 L 5,92 A 28,28 0 0,0 61,92 L 61,60 Z" fill="url(#capDeepBlueGrad)" stroke="#ffffff" stroke-width="2.5" />
+                  <rect x="3" y="57" width="60" height="6" rx="3" fill="#ffffff" />
+                </g>
+                <g transform="translate(148, 55) rotate(34 40 65)" filter="url(#pillShadow)">
+                  <path d="M 5,60 L 5,28 A 28,28 0 0,1 61,28 L 61,60 Z" fill="url(#capCyanGrad)" stroke="#ffffff" stroke-width="2.5" />
+                  <path d="M 10,24 A 20,20 0 0,1 56,24 L 56,38 C 30,38 15,28 10,24 Z" fill="url(#glossHighlight)" />
+                  <path d="M 5,60 L 5,92 A 28,28 0 0,0 61,92 L 61,60 Z" fill="url(#capDeepBlueGrad)" stroke="#ffffff" stroke-width="2.5" />
+                  <rect x="3" y="57" width="60" height="6" rx="3" fill="#ffffff" />
+                </g>
+                <path d="M 120 42 C 95 12, 45 18, 25 38 C 50 36, 90 45, 120 65 C 150 45, 190 36, 215 38 C 195 18, 145 12, 120 42 Z" fill="url(#metalCyanGrad)" stroke="#ffffff" stroke-width="1.5" />
+                <path d="M 120 46 C 100 24, 60 26, 42 40 C 62 40, 95 48, 120 65 C 145 48, 178 40, 198 40 C 180 26, 140 24, 120 46 Z" fill="url(#glossHighlight)" opacity="0.6" />
+                <rect x="116" y="24" width="8" height="180" rx="4" fill="url(#metalCyanGrad)" stroke="#ffffff" stroke-width="1.5" />
+                <circle cx="120" cy="22" r="11" fill="url(#metalCyanGrad)" stroke="#ffffff" stroke-width="2" />
+                <circle cx="117" cy="18" r="4" fill="#ffffff" opacity="0.8" />
+                <path d="M 120 68 C 85 80, 85 110, 120 120 C 155 130, 155 160, 120 170 C 100 176, 102 195, 120 200" stroke="url(#metalCyanGrad)" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M 120 68 C 155 80, 155 110, 120 120 C 85 130, 85 160, 120 170 C 140 176, 138 195, 120 200" stroke="#0284c7" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.9" />
+                <path d="M 120 68 C 85 80, 85 110, 120 120 C 155 130, 155 160, 120 170" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.7" />
+              </g>
+            </svg>
+          </div>
+          <div class="flex flex-col">
+            <div class="flex items-center">
+              <span class="text-2xl font-black tracking-tight text-slate-900">Rp</span>
+              <span class="text-2xl font-black tracking-tight text-brand-700">MedX</span>
+            </div>
+            <span class="text-[10px] font-bold tracking-widest uppercase text-slate-400 -mt-1">BD Rx Directory</span>
+          </div>
+        </div>
+
+        <!-- Global Search Bar -->
+        <div class="flex-1 max-w-xl relative">
+          <div class="relative">
+            <input 
+              type="text" 
+              id="mainSearchInput" 
+              placeholder="Search medicine, generic name, or company... (e.g. Napa, Seclo, Square)" 
+              class="w-full pl-10 pr-10 py-2.5 bg-slate-100 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-700 focus:bg-white transition-all shadow-inner"
+              oninput="handleSearch(this.value)"
+            />
+            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600">
+              <i class="fa-solid fa-circle-xmark"></i>
+            </button>
+          </div>
+
+          <!-- Dropdown Search Results -->
+          <div id="searchResultsDropdown" class="hidden absolute left-0 right-0 top-full mt-2 bg-white border border-slate-200 rounded-xl shadow-2xl max-h-96 overflow-y-auto custom-scrollbar z-50">
+            <!-- Dynamic search results populated by JS -->
+          </div>
+        </div>
+
+        <!-- Right Side Controls -->
+        <div class="flex items-center gap-3">
+          <button 
+            onclick="toggleLanguage()" 
+            class="flex items-center gap-2 px-3.5 py-2 border border-slate-200 rounded-xl text-xs font-bold hover:bg-slate-50 transition-colors text-slate-700 shadow-sm"
+            id="langToggleBtn">
+            <i class="fa-solid fa-globe text-brand-700 text-sm"></i>
+            <span id="langText">বাংলা</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+    <!-- Hero / Quick Access Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div 
+        onclick="switchTab('search-section')" 
+        class="bg-white p-4.5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:border-brand-500 transition-all cursor-pointer flex flex-col sm:flex-row items-center gap-3.5 group">
+        <div class="w-12 h-12 rounded-xl bg-brand-50 text-brand-700 flex items-center justify-center group-hover:bg-brand-700 group-hover:text-white transition-colors shrink-0 shadow-sm">
+          <i class="fa-solid fa-pills text-xl"></i>
+        </div>
+        <div class="text-center sm:text-left">
+          <h3 class="font-bold text-sm text-slate-900 leading-tight" data-en="Search Medicine" data-bn="ওষুধ খুঁজুন">Search Medicine</h3>
+          <p class="text-xs text-slate-500 mt-0.5" data-en="Brands & Prices" data-bn="ব্র্যান্ড ও দাম">Brands & Prices</p>
+        </div>
+      </div>
+
+      <div 
+        onclick="switchTab('alternative-section')" 
+        class="bg-white p-4.5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:border-brand-500 transition-all cursor-pointer flex flex-col sm:flex-row items-center gap-3.5 group">
+        <div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center group-hover:bg-teal-700 group-hover:text-white transition-colors shrink-0 shadow-sm">
+          <i class="fa-solid fa-repeat text-xl"></i>
+        </div>
+        <div class="text-center sm:text-left">
+          <h3 class="font-bold text-sm text-slate-900 leading-tight" data-en="Alternative Brands" data-bn="বিকল্প ব্র্যান্ড">Alternative Brands</h3>
+          <p class="text-xs text-slate-500 mt-0.5" data-en="Save Cost & Compare" data-bn="দাম ও ব্র্যান্ড তুলনা">Save Cost & Compare</p>
+        </div>
+      </div>
+
+      <div 
+        onclick="switchTab('interaction-section')" 
+        class="bg-white p-4.5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:border-brand-500 transition-all cursor-pointer flex flex-col sm:flex-row items-center gap-3.5 group">
+        <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center group-hover:bg-amber-600 group-hover:text-white transition-colors shrink-0 shadow-sm">
+          <i class="fa-solid fa-shield-virus text-xl"></i>
+        </div>
+        <div class="text-center sm:text-left">
+          <h3 class="font-bold text-sm text-slate-900 leading-tight" data-en="Interaction Checker" data-bn="ওষুধের প্রতিক্রিয়া">Interaction Checker</h3>
+          <p class="text-xs text-slate-500 mt-0.5" data-en="Check Drug Safety" data-bn="নিরাপত্তা পরীক্ষা করুন">Check Drug Safety</p>
+        </div>
+      </div>
+
+      <div 
+        onclick="openPillModal()" 
+        class="bg-white p-4.5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:border-brand-500 transition-all cursor-pointer flex flex-col sm:flex-row items-center gap-3.5 group">
+        <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-700 flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition-colors shrink-0 shadow-sm">
+          <i class="fa-solid fa-clock text-xl"></i>
+        </div>
+        <div class="text-center sm:text-left">
+          <h3 class="font-bold text-sm text-slate-900 leading-tight" data-en="Pill Reminder" data-bn="মেডিসিন রিমাইন্ডার">Pill Reminder</h3>
+          <p class="text-xs text-slate-500 mt-0.5" data-en="Set Dosage Alarm" data-bn="ডোজ অ্যালার্ম দিন">Set Dosage Alarm</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="flex border-b border-slate-200 mb-6 gap-8 text-sm font-semibold">
+      <button 
+        id="tab-search-section" 
+        onclick="switchTab('search-section')" 
+        class="pb-3 border-b-2 border-brand-700 text-brand-700 transition-all">
+        <i class="fa-solid fa-list-ul mr-1.5"></i> <span data-en="Medicine Directory" data-bn="মেডিসিন ডিরেক্টরি">Medicine Directory</span>
+      </button>
+      <button 
+        id="tab-alternative-section" 
+        onclick="switchTab('alternative-section')" 
+        class="pb-3 border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition-all">
+        <i class="fa-solid fa-boxes-stacked mr-1.5"></i> <span data-en="Brand Comparison" data-bn="ব্র্যান্ডের তুলনা">Brand Comparison</span>
+      </button>
+      <button 
+        id="tab-interaction-section" 
+        onclick="switchTab('interaction-section')" 
+        class="pb-3 border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition-all">
+        <i class="fa-solid fa-triangle-exclamation mr-1.5"></i> <span data-en="Drug Interactions" data-bn="ড্রাগ ইন্টারঅ্যাকশন">Drug Interactions</span>
+      </button>
+    </div>
+
+    <!-- TAB 1: MEDICINE DIRECTORY -->
+    <section id="search-section" class="tab-content block">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-3">
+        <div>
+          <h2 class="text-xl font-extrabold text-slate-900" data-en="Popular Medicines in Bangladesh" data-bn="বাংলাদেশের জনপ্রিয় ওষুধসমূহ">Popular Medicines in Bangladesh</h2>
+          <p class="text-xs text-slate-500 mt-0.5" data-en="Click on any medicine to view detailed pharmacology, dose, price, & safety info" data-bn="বিস্তারিত তথ্য, ডোজ, দাম ও সতর্কতা দেখতে যেকোনো ওষুধে ক্লিক করুন">Click on any medicine to view detailed pharmacology, dose, price, & safety info</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-semibold text-slate-500" data-en="Filter Category:" data-bn="ফিল্টার:">Filter Category:</span>
+          <select id="categoryFilter" onchange="filterCategory(this.value)" class="text-xs border border-slate-200 rounded-xl px-3 py-2 bg-white font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-700 shadow-sm">
+            <option value="All">All Categories</option>
+            <option value="Pain Relief & Fever">Pain Relief & Fever</option>
+            <option value="Gastric & Anti-ulcer">Gastric & Anti-ulcer</option>
+            <option value="Antibiotics">Antibiotics</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="medicineGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- Javascript renders medicine cards here -->
+      </div>
+    </section>
+
+    <!-- TAB 2: ALTERNATIVE BRANDS -->
+    <section id="alternative-section" class="tab-content hidden">
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+        <div class="max-w-xl mb-6">
+          <h2 class="text-lg font-bold text-slate-900 mb-1" data-en="Find Alternative Brands by Generic Name" data-bn="জেনেরিক নাম দিয়ে বিকল্প ব্র্যান্ড খুঁজুন">Find Alternative Brands by Generic Name</h2>
+          <p class="text-xs text-slate-500 mb-4" data-en="Compare prices and available substitutes from top pharma companies (Square, Incepta, Beximco, etc.)" data-bn="বাংলাদেশের শীর্ষ কোম্পানির একই জেনেরিকের অন্যান্য ব্র্যান্ড ও তাদের দাম তুলনা করুন">Compare prices and available substitutes from top pharma companies</p>
+          
+          <label class="block text-xs font-semibold text-slate-700 mb-1" data-en="Select Generic Name:" data-bn="জেনেরিক নাম সিলেক্ট করুন:">Select Generic Name:</label>
+          <select id="genericSelect" onchange="renderAlternatives(this.value)" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm bg-slate-50 font-semibold focus:ring-2 focus:ring-brand-700 focus:outline-none shadow-sm">
+            <option value="Paracetamol">Paracetamol (Analgesic & Antipyretic)</option>
+            <option value="Omeprazole">Omeprazole (Proton Pump Inhibitor)</option>
+            <option value="Esomeprazole">Esomeprazole (Anti-ulcerant)</option>
+          </select>
+        </div>
+
+        <div id="alternativeList" class="space-y-3">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: DRUG INTERACTION CHECKER -->
+    <section id="interaction-section" class="tab-content hidden">
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm max-w-3xl mx-auto">
+        <div class="text-center max-w-lg mx-auto mb-6">
+          <div class="w-12 h-12 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center mx-auto mb-2 shadow-inner">
+            <i class="fa-solid fa-shield-triangle-exclamation text-xl"></i>
+          </div>
+          <h2 class="text-xl font-bold text-slate-900" data-en="Drug Interaction Checker" data-bn="ওষুধের ইন্টারঅ্যাকশন চেকার">Drug Interaction Checker</h2>
+          <p class="text-xs text-slate-500 mt-1" data-en="Select two medicines to evaluate potential adverse interactions and safety warnings." data-bn="দুটি ওষুধ বেছে নিয়ে তাদের পারস্পরিক ক্ষতিকর প্রভাব রয়েছে কিনা দেখুন।">Select two medicines to evaluate potential adverse interactions and safety warnings.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1" data-en="First Medicine:" data-bn="প্রথম ওষুধ:">First Medicine:</label>
+            <select id="drug1" class="w-full border border-slate-300 rounded-xl p-3 text-sm bg-slate-50 font-semibold focus:ring-2 focus:ring-brand-700 focus:outline-none">
+              <option value="Omeprazole">Seclo (Omeprazole 20mg)</option>
+              <option value="Clopidogrel">Clopid (Clopidogrel 75mg)</option>
+              <option value="Paracetamol">Napa (Paracetamol 500mg)</option>
+              <option value="Warfarin">Warfarin 5mg</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1" data-en="Second Medicine:" data-bn="দ্বিতীয় ওষুধ:">Second Medicine:</label>
+            <select id="drug2" class="w-full border border-slate-300 rounded-xl p-3 text-sm bg-slate-50 font-semibold focus:ring-2 focus:ring-brand-700 focus:outline-none">
+              <option value="Clopidogrel">Clopid (Clopidogrel 75mg)</option>
+              <option value="Omeprazole">Seclo (Omeprazole 20mg)</option>
+              <option value="Paracetamol">Napa (Paracetamol 500mg)</option>
+              <option value="Warfarin">Warfarin 5mg</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="text-center mb-6">
+          <button onclick="checkInteraction()" class="px-6 py-3 bg-brand-700 text-white rounded-xl font-bold text-sm hover:bg-brand-800 transition-colors shadow-lg shadow-brand-700/25">
+            <i class="fa-solid fa-calculator mr-1.5"></i> <span data-en="Analyze Interaction" data-bn="পরীক্ষা করুন">Analyze Interaction</span>
+          </button>
+        </div>
+
+        <div id="interactionResult" class="hidden p-4 rounded-xl border">
+          <!-- JS dynamic content -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MEDICINE DETAIL MODAL -->
+  <div id="medicineModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col transform transition-all">
+      <div class="px-6 py-4 bg-slate-50 border-b border-slate-200 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center font-bold text-lg shadow-sm">
+            <i class="fa-solid fa-tablets"></i>
+          </div>
+          <div>
+            <h3 id="modalBrandName" class="text-lg font-bold text-slate-900 leading-none">Napa 500mg</h3>
+            <p id="modalCompany" class="text-xs font-semibold text-brand-700 mt-1">Square Pharmaceuticals PLC</p>
+          </div>
+        </div>
+        <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600 w-8 h-8 rounded-full flex items-center justify-center hover:bg-slate-200/60 transition-colors">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <div class="p-6 overflow-y-auto custom-scrollbar space-y-5 text-sm">
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 p-3.5 bg-brand-50/60 rounded-xl border border-brand-100">
+          <div>
+            <span class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider" data-en="Generic Name" data-bn="জেনেরিক নাম">Generic Name</span>
+            <span id="modalGeneric" class="font-bold text-slate-800 text-xs">Paracetamol</span>
+          </div>
+          <div>
+            <span class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider" data-en="Unit Price" data-bn="প্রতি পিসের দাম">Unit Price</span>
+            <span id="modalPrice" class="font-black text-emerald-700 text-xs">৳ 1.20 / tablet</span>
+          </div>
+          <div>
+            <span class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider" data-en="Form" data-bn="ধরনের রূপ">Form</span>
+            <span id="modalForm" class="font-bold text-slate-800 text-xs">Tablet</span>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-slate-900 mb-1.5 flex items-center gap-2">
+            <i class="fa-solid fa-stethoscope text-brand-700"></i> <span data-en="Indications / Uses" data-bn="ব্যবহারের ক্ষেত্র">Indications / Uses</span>
+          </h4>
+          <p id="modalIndications" class="text-slate-600 text-xs leading-relaxed bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+            Fever, headache, toothache, body pain, flu symptoms, and rheumatoid arthritis pain.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-slate-900 mb-1.5 flex items-center gap-2">
+            <i class="fa-solid fa-prescription-bottle-medical text-brand-700"></i> <span data-en="Dosage & Administration" data-bn="সেবনবিধি">Dosage & Administration</span>
+          </h4>
+          <p id="modalDosage" class="text-slate-600 text-xs leading-relaxed bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+            Adults: 1-2 tablets every 4-6 hours up to maximum 4000mg per day. Children: As directed by a registered physician.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-slate-900 mb-1.5 flex items-center gap-2">
+            <i class="fa-solid fa-triangle-exclamation text-amber-600"></i> <span data-en="Side Effects & Warnings" data-bn="পার্শ্বপ্রতিক্রিয়া ও সতর্কতা">Side Effects & Warnings</span>
+          </h4>
+          <p id="modalSideEffects" class="text-slate-600 text-xs leading-relaxed bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+            Rare allergic skin reactions. Excessive dosage can lead to liver damage. Avoid chronic heavy alcohol use with paracetamol.
+          </p>
+        </div>
+      </div>
+
+      <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-200 flex justify-between items-center">
+        <button id="modalAltBtn" onclick="viewAltFromModal()" class="px-4 py-2 bg-slate-200 text-slate-800 text-xs font-bold rounded-xl hover:bg-slate-300 transition-colors">
+          <i class="fa-solid fa-layer-group mr-1"></i> <span data-en="View Alternatives" data-bn="বিকল্প ব্র্যান্ডসমূহ">View Alternatives</span>
+        </button>
+        <button onclick="closeModal()" class="px-4 py-2 bg-brand-700 text-white text-xs font-bold rounded-xl hover:bg-brand-800 transition-colors shadow-md shadow-brand-700/20">
+          <span data-en="Close" data-bn="বন্ধ করুন">Close</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILL REMINDER MODAL -->
+  <div id="pillModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 relative">
+      <button onclick="closePillModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+
+      <div class="text-center mb-4">
+        <div class="w-12 h-12 bg-indigo-100 text-indigo-700 rounded-2xl flex items-center justify-center mx-auto mb-2 shadow-inner">
+          <i class="fa-solid fa-bell text-xl"></i>
+        </div>
+        <h3 class="text-lg font-bold text-slate-900" data-en="Pill Dose Reminder" data-bn="মেডিসিন রিমাইন্ডার সেট করুন">Pill Dose Reminder</h3>
+        <p class="text-xs text-slate-500 mt-0.5" data-en="Set automated reminders for daily medications" data-bn="আপনার দৈনন্দিন ওষুধের সঠিক সময়ের নোটিফিকেশন সেট করুন">Set automated reminders for daily medications</p>
+      </div>
+
+      <form onsubmit="handleReminderSubmit(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block font-bold text-slate-700 mb-1" data-en="Medicine Name:" data-bn="ওষুধের নাম:">Medicine Name:</label>
+          <input type="text" placeholder="e.g. Napa 500mg" class="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-600 font-semibold" required />
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1" data-en="Reminder Time:" data-bn="সময়:">Reminder Time:</label>
+            <input type="time" class="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-600 font-semibold" required />
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1" data-en="Frequency:" data-bn="কতবার:">Frequency:</label>
+            <select class="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-600 font-semibold">
+              <option>Once Daily</option>
+              <option>Twice Daily (12h)</option>
+              <option>Thrice Daily (8h)</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="w-full py-3 bg-indigo-600 text-white font-bold rounded-xl shadow-lg shadow-indigo-600/30 hover:bg-indigo-700 transition-colors">
+          <span data-en="Set Alarm Notification" data-bn="রিমাইন্ডার সেভ করুন">Set Alarm Notification</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Box -->
+  <div id="toastBox" class="fixed bottom-5 right-5 bg-slate-900 text-white text-xs px-4 py-3.5 rounded-xl shadow-2xl flex items-center gap-2.5 transform translate-y-20 opacity-0 transition-all z-50 border border-slate-800">
+    <i class="fa-solid fa-circle-check text-brand-500 text-base"></i>
+    <span id="toastMessage" class="font-semibold">Action completed successfully!</span>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-slate-200 py-6 mt-12">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <p class="text-xs font-semibold text-slate-500">
+        © 2026 RpMedX BD Reference Guide. Healthcare information for educational purposes only.
+      </p>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // Sample Dataset for Bangladeshi Medicines
+    const medicinesData = [
+      {
+        id: "napa-500",
+        brandName: "Napa 500mg",
+        genericName: "Paracetamol",
+        company: "Square Pharmaceuticals PLC",
+        price: 1.20,
+        form: "Tablet",
+        category: "Pain Relief & Fever",
+        indications: "Fever, headache, toothache, muscular pain, cold & influenza symptoms.",
+        indicationsBn: "জ্বর, মাথা ব্যথা, দাঁত ব্যথা, মাংসপেশির ব্যথা এবং সর্দি-কাশির উপসর্গ।",
+        dosage: "Adults: 1-2 tablets 3-4 times daily. Maximum 8 tablets (4000mg) per day.",
+        dosageBn: "প্রাপ্তবয়স্ক: ১-২ টি ট্যাবলেট দিনে ৩-৪ বার। দিনে সর্বোচ্চ ৪০০০ মিগ্রা এর বেশি নয়।",
+        sideEffects: "Very rare skin allergies or rashes. Excessive dose damages liver.",
+        sideEffectsBn: "খুব কম ক্ষেত্রে ত্বকে চুলকানি হতে পারে। অতিরিক্ত সেবনে লিভারের ক্ষতি হতে পারে।"
+      },
+      {
+        id: "seclo-20",
+        brandName: "Seclo 20mg",
+        genericName: "Omeprazole",
+        company: "Square Pharmaceuticals PLC",
+        price: 7.00,
+        form: "Capsule",
+        category: "Gastric & Anti-ulcer",
+        indications: "Gastric ulcer, duodenal ulcer, GERD, acid reflux, heartburn.",
+        indicationsBn: "গ্যাস্ট্রিক আলসার, ডিওডেনাল আলসার, এসিডিটি এবং বুক জ্বালাপোড়া।",
+        dosage: "One capsule (20mg) daily before breakfast for 4 to 8 weeks.",
+        dosageBn: "প্রতিদিন সকালে খাবারের ৩০ মিনিট আগে ১ টি ক্যাপসুল।",
+        sideEffects: "Headache, diarrhea, nausea, abdominal pain, flatulence.",
+        sideEffectsBn: "মাথা ব্যথা, পাতলা পায়খানা, বমি বমি ভাব, পেটে ব্যথা।"
+      }
+    ];
+
+    let currentLang = 'en';
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'bn' : 'en';
+      document.getElementById('langText').innerText = currentLang === 'en' ? 'বাংলা' : 'English';
+      
+      document.querySelectorAll('[data-en]').forEach(el => {
+        el.innerText = el.getAttribute(`data-${currentLang}`);
+      });
+      renderMedicineGrid(medicinesData);
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.getElementById(tabId).classList.remove('hidden');
+
+      ['search-section', 'alternative-section', 'interaction-section'].forEach(id => {
+        const btn = document.getElementById(`tab-${id}`);
+        if(btn) {
+          if(id === tabId) {
+            btn.className = "pb-3 border-b-2 border-brand-700 text-brand-700 transition-all font-bold";
+          } else {
+            btn.className = "pb-3 border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition-all font-semibold";
+          }
+        }
+      });
+    }
+
+    // ADVANCED SMARTEST TYPO-TOLERANT SEARCH (MedEx Style)
+    function handleSearch(query) {
+      const dropdown = document.getElementById('searchResultsDropdown');
+      const clearBtn = document.getElementById('clearSearchBtn');
+      const trimmed = query.trim().toLowerCase();
+
+      if (trimmed.length > 0) {
+        clearBtn.classList.remove('hidden');
+      } else {
+        clearBtn.classList.add('hidden');
+        dropdown.classList.add('hidden');
+        renderMedicineGrid(medicinesData);
+        return;
+      }
+
+      function getSimilarityScore(str1, str2) {
+        let matches = 0;
+        const len = Math.min(str1.length, str2.length);
+        for (let i = 0; i < len; i++) {
+          if (str1[i] === str2[i]) matches++;
+        }
+        if (str2.includes(str1) || str1.includes(str2)) {
+          matches += 2;
+        }
+        return matches;
+      }
+
+      const scoredMedicines = medicinesData.map(item => {
+        const brand = item.brandName.toLowerCase();
+        const generic = item.genericName.toLowerCase();
+        const company = item.company.toLowerCase();
+
+        let score = 0;
+        if (brand.includes(trimmed)) score += 10;
+        if (generic.includes(trimmed)) score += 8;
+        if (company.includes(trimmed)) score += 5;
+
+        const scoreBrand = getSimilarityScore(trimmed, brand);
+        const scoreGeneric = getSimilarityScore(trimmed, generic);
+        score += Math.max(scoreBrand, scoreGeneric);
+
+        return { item, score };
+      });
+
+      const filtered = scoredMedicines
+        .filter(res => res.score > 0 || res.item.brandName.toLowerCase().startsWith(trimmed[0]))
+        .sort((a, b) => b.score - a.score)
+        .map(res => res.item);
+
+      dropdown.innerHTML = '';
+      if (filtered.length > 0) {
+        filtered.slice(0, 6).forEach(item => {
+          const div = document.createElement('div');
+          div.className = "px-4 py-3 hover:bg-slate-50 cursor-pointer border-b border-slate-100 flex justify-between items-center text-xs";
+          div.onclick = () => {
+            openMedicineModal(item.id);
+            dropdown.classList.add('hidden');
+          };
+          div.innerHTML = `
+            <div>
+              <span class="font-bold text-slate-900 block">${item.brandName}</span>
+              <span class="text-slate-500 text-[11px] font-semibold">${item.genericName} • ${item.company}</span>
+            </div>
+            <span class="font-black text-emerald-700">৳ ${item.price.toFixed(2)}</span>
+          `;
+          dropdown.appendChild(div);
+        });
+      } else {
+        dropdown.innerHTML = `<div class="px-4 py-3 text-xs text-slate-400 text-center font-medium">No matching medicine found. Please check spelling.</div>`;
+      }
+
+      dropdown.classList.remove('hidden');
+      renderMedicineGrid(filtered);
+    }
+
+    function clearSearch() {
+      document.getElementById('mainSearchInput').value = '';
+      document.getElementById('clearSearchBtn').classList.add('hidden');
+      document.getElementById('searchResultsDropdown').classList.add('hidden');
+      renderMedicineGrid(medicinesData);
+    }
+
+    function renderMedicineGrid(data) {
+      const grid = document.getElementById('medicineGrid');
+      grid.innerHTML = '';
+      
+      if(data.length === 0) {
+        grid.innerHTML = `<div class="col-span-full py-12 text-center text-slate-400 text-sm font-semibold">কোনো ওষুধ পাওয়া যায়নি।</div>`;
+        return;
+      }
+
+      data.forEach(med => {
+        const card = document.createElement('div');
+        card.className = "bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:border-brand-500 transition-all cursor-pointer flex flex-col justify-between";
+        card.onclick = () => openMedicineModal(med.id);
+        
+        card.innerHTML = `
+          <div>
+            <div class="flex justify-between items-start mb-2">
+              <span class="px-2.5 py-1 bg-brand-50 text-brand-700 text-[10px] font-bold rounded-lg">${med.form}</span>
+              <span class="text-xs font-black text-emerald-700">৳ ${med.price.toFixed(2)}</span>
+            </div>
+            <h3 class="font-bold text-base text-slate-900">${med.brandName}</h3>
+            <p class="text-xs font-semibold text-brand-700 mt-0.5">${med.genericName}</p>
+            <p class="text-[11px] text-slate-500 mt-1">${med.company}</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs font-bold text-slate-600">
+            <span>${currentLang === 'bn' ? 'বিস্তারিত দেখুন' : 'View Details'}</span>
+            <i class="fa-solid fa-arrow-right text-brand-700 text-xs"></i>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function openMedicineModal(id) {
+      const med = medicinesData.find(m => m.id === id);
+      if(!med) return;
+
+      document.getElementById('modalBrandName').innerText = med.brandName;
+      document.getElementById('modalCompany').innerText = med.company;
+      document.getElementById('modalGeneric').innerText = med.genericName;
+      document.getElementById('modalPrice').innerText = `৳ ${med.price.toFixed(2)} / ${med.form.toLowerCase()}`;
+      document.getElementById('modalForm').innerText = med.form;
+      document.getElementById('modalIndications').innerText = currentLang === 'bn' ? med.indicationsBn : med.indications;
+      document.getElementById('modalDosage').innerText = currentLang === 'bn' ? med.dosageBn : med.dosage;
+      document.getElementById('modalSideEffects').innerText = currentLang === 'bn' ? med.sideEffectsBn : med.sideEffects;
+
+      document.getElementById('medicineModal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('medicineModal').classList.add('hidden');
+    }
+
+    function openPillModal() {
+      document.getElementById('pillModal').classList.remove('hidden');
+    }
+
+    function closePillModal() {
+      document.getElementById('pillModal').classList.add('hidden');
+    }
+
+    function handleReminderSubmit(e) {
+      e.preventDefault();
+      closePillModal();
+      showToast('Pill dose reminder alarm set successfully!');
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toastBox');
+      document.getElementById('toastMessage').innerText = msg;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3500);
+    }
+
+    function filterCategory(cat) {
+      if(cat === 'All') {
+        renderMedicineGrid(medicinesData);
+      } else {
+        const filtered = medicinesData.filter(m => m.category === cat);
+        renderMedicineGrid(filtered);
+      }
+    }
+
+    // Initial load
+    renderMedicineGrid(medicinesData);
+  // Alternative Brands Data & Function
+    const alternativesData = {
+      "Paracetamol": [
+        { brandName: "Napa 500mg", company: "Square Pharmaceuticals PLC", price: 1.20, form: "Tablet" },
+        { brandName: "Ace 500mg", company: "Incepta Pharmaceuticals Ltd.", price: 1.20, form: "Tablet" },
+        { brandName: "Fast 500mg", company: "Eskayef Pharmaceuticals", price: 1.20, form: "Tablet" },
+        { brandName: "Pyricol 500mg", company: "Beximco Pharmaceuticals", price: 1.25, form: "Tablet" }
+      ],
+      "Omeprazole": [
+        { brandName: "Seclo 20mg", company: "Square Pharmaceuticals PLC", price: 7.00, form: "Capsule" },
+        { brandName: "Progut 20mg", company: "Incepta Pharmaceuticals Ltd.", price: 6.50, form: "Capsule" },
+        { brandName: "Omidon 20mg", company: "Eskayef Pharmaceuticals", price: 6.00, form: "Tablet" }
+      ],
+      "Esomeprazole": [
+        { brandName: "Sergel 20mg", company: "Incepta Pharmaceuticals Ltd.", price: 7.00, form: "Capsule" },
+        { brandName: "Maxpro 20mg", company: "Renata Limited", price: 7.00, form: "Capsule" },
+        { brandName: "Esonix 20mg", company: "Incepta Pharmaceuticals Ltd.", price: 6.80, form: "Capsule" }
+      ]
+    };
+
+    function renderAlternatives(genericName) {
+      const listContainer = document.getElementById('alternativeList');
+      listContainer.innerHTML = '';
+      
+      const subs = alternativesData[genericName] || [];
+      
+      if(subs.length === 0) {
+        listContainer.innerHTML = `<p class="text-xs text-slate-400 font-medium text-center py-4">এই জেনেরিকের কোনো বিকল্প ব্র্যান্ড পাওয়া যায়নি।</p>`;
+        return;
+      }
+
+      subs.forEach(item => {
+        const div = document.createElement('div');
+        div.className = "flex justify-between items-center p-3.5 bg-slate-50 border border-slate-200 rounded-xl hover:border-brand-500 transition-all";
+        div.innerHTML = `
+          <div>
+            <span class="font-bold text-slate-900 text-xs block">${item.brandName}</span>
+            <span class="text-[11px] text-slate-500 font-semibold">${item.company} • ${item.form}</span>
+          </div>
+          <span class="font-black text-emerald-700 text-xs">৳ ${item.price.toFixed(2)}</span>
+        `;
+        listContainer.appendChild(div);
+      });
+    }
+
+    // Drug Interaction Checker Function
+    function checkInteraction() {
+      const drug1 = document.getElementById('drug1').value;
+      const drug2 = document.getElementById('drug2').value;
+      const resultDiv = document.getElementById('interactionResult');
+
+      resultDiv.classList.remove('hidden');
+
+      if (drug1 === drug2) {
+        resultDiv.className = "p-4 rounded-xl border bg-amber-50 border-amber-200 text-amber-800 text-xs font-semibold";
+        resultDiv.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-1.5"></i> অনুগ্রহ করে দুটি ভিন্ন ওষুধ নির্বাচন করুন।`;
+        return;
+      }
+
+      // Sample interaction rule check
+      if ((drug1 === 'Omeprazole' && drug2 === 'Clopidogrel') || (drug1 === 'Clopidogrel' && drug2 === 'Omeprazole')) {
+        resultDiv.className = "p-4 rounded-xl border bg-rose-50 border-rose-200 text-rose-800 text-xs font-semibold";
+        resultDiv.innerHTML = `<i class="fa-solid fa-ban mr-1.5"></i> <strong>সতর্কতা (Moderate Interaction):</strong> Omeprazole এবং Clopidogrel একত্রে সেবন করলে ক্লপিডেগ্রেলের কার্যকারিতা কমে যেতে পারে। চিকিৎসকের পরামর্শ অনুযায়ী সেবন করুন।`;
+      } else if ((drug1 === 'Warfarin' && drug2 === 'Paracetamol') || (drug1 === 'Paracetamol' && drug2 === 'Warfarin')) {
+        resultDiv.className = "p-4 rounded-xl border bg-amber-50 border-amber-200 text-amber-800 text-xs font-semibold";
+        resultDiv.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-1.5"></i> <strong>সতর্কতা:</strong> নিয়মিত প্যারাসিটামল ও ওয়ারফারিন একত্রে দীর্ঘসময় সেবন করলে রক্তপাতের ঝুঁকি বাড়তে পারে।`;
+      } else {
+        resultDiv.className = "p-4 rounded-xl border bg-emerald-50 border-emerald-200 text-emerald-800 text-xs font-semibold";
+        resultDiv.innerHTML = `<i class="fa-solid fa-circle-check mr-1.5"></i> <strong>নিরাপদ:</strong> সাধারণ তথ্যানুযায়ী এই দুটি ওষুধের মধ্যে বড় ধরনের কোনো ক্ষতিকর ইন্টারঅ্যাকশন পাওয়া যায়নি। তবুও ডাক্তারের পরামর্শ নেওয়া শ্রেয়।`;
+      }
+    }
+
+    // Initial call for alternatives list on page load
+    renderAlternatives("Paracetamol");
+  </script>
+</body>
+</html>

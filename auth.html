@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RpMedX - Sign In & Register</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0284c7',
+              600: '#0369a1',
+              700: '#0284c7',
+              800: '#075985',
+              900: '#0c4a6e',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'Hind Siliguri', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', 'Hind Siliguri', sans-serif;
+      background-color: #0f172a;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .tab-transition {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .logo-3d-hover {
+      filter: drop-shadow(0px 10px 15px rgba(2, 132, 199, 0.3));
+      transition: transform 0.3s ease;
+    }
+    .logo-3d-hover:hover {
+      transform: translateY(-3px) scale(1.04);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+  <!-- Outer Mobile Frame Wrapper -->
+  <div class="w-full max-w-sm sm:max-w-md bg-white rounded-[45px] shadow-2xl overflow-hidden border-[10px] border-slate-800 relative my-6">
+    
+    <!-- Mobile Status Bar -->
+    <div class="bg-white px-6 pt-3 pb-1 flex justify-between items-center text-xs font-semibold text-slate-700 select-none">
+      <span>10:30 AM</span>
+      <div class="w-20 h-4 bg-slate-800 rounded-full"></div>
+      <div class="flex items-center space-x-1.5">
+        <i class="fa-solid fa-signal text-[10px]"></i>
+        <i class="fa-solid fa-wifi text-[10px]"></i>
+        <i class="fa-solid fa-battery-full text-xs"></i>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="px-6 pt-3 pb-8 bg-slate-50 min-h-[680px] flex flex-col justify-between no-scrollbar overflow-y-auto">
+      
+      <!-- Top Branding Section with 3D Glossy Vector Logo -->
+      <div class="text-center pt-2 pb-3">
+        <div class="w-20 h-20 mx-auto mb-2 flex items-center justify-center logo-3d-hover">
+          <svg viewBox="0 0 240 240" class="w-full h-full overflow-visible">
+            <defs>
+              <linearGradient id="capCyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#38bdf8" />
+                <stop offset="50%" stop-color="#0284c7" />
+                <stop offset="100%" stop-color="#0369a1" />
+              </linearGradient>
+              <linearGradient id="capDeepBlueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#0284c7" />
+                <stop offset="60%" stop-color="#1e40af" />
+                <stop offset="100%" stop-color="#1e3a8a" />
+              </linearGradient>
+              <linearGradient id="metalCyanGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#00d2ff" />
+                <stop offset="50%" stop-color="#0077ff" />
+                <stop offset="100%" stop-color="#0044b3" />
+              </linearGradient>
+              <linearGradient id="glossHighlight" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.75" />
+                <stop offset="40%" stop-color="#ffffff" stop-opacity="0.1" />
+                <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+              </linearGradient>
+              <filter id="shadow3d" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#0284c7" flood-opacity="0.3" />
+              </filter>
+              <filter id="pillShadow" x="-30%" y="-30%" width="160%" height="160%">
+                <feDropShadow dx="3" dy="10" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.25" />
+              </filter>
+            </defs>
+
+            <g filter="url(#shadow3d)">
+              <g transform="translate(18, 92) rotate(-34 40 65)" filter="url(#pillShadow)">
+                <path d="M 5,60 L 5,28 A 28,28 0 0,1 61,28 L 61,60 Z" fill="url(#capCyanGrad)" stroke="#ffffff" stroke-width="2.5" />
+                <path d="M 10,24 A 20,20 0 0,1 56,24 L 56,38 C 30,38 15,28 10,24 Z" fill="url(#glossHighlight)" />
+                <path d="M 5,60 L 5,92 A 28,28 0 0,0 61,92 L 61,60 Z" fill="url(#capDeepBlueGrad)" stroke="#ffffff" stroke-width="2.5" />
+                <rect x="3" y="57" width="60" height="6" rx="3" fill="#ffffff" />
+              </g>
+              <g transform="translate(148, 55) rotate(34 40 65)" filter="url(#pillShadow)">
+                <path d="M 5,60 L 5,28 A 28,28 0 0,1 61,28 L 61,60 Z" fill="url(#capCyanGrad)" stroke="#ffffff" stroke-width="2.5" />
+                <path d="M 10,24 A 20,20 0 0,1 56,24 L 56,38 C 30,38 15,28 10,24 Z" fill="url(#glossHighlight)" />
+                <path d="M 5,60 L 5,92 A 28,28 0 0,0 61,92 L 61,60 Z" fill="url(#capDeepBlueGrad)" stroke="#ffffff" stroke-width="2.5" />
+                <rect x="3" y="57" width="60" height="6" rx="3" fill="#ffffff" />
+              </g>
+              <path d="M 120 42 C 95 12, 45 18, 25 38 C 50 36, 90 45, 120 65 C 150 45, 190 36, 215 38 C 195 18, 145 12, 120 42 Z" fill="url(#metalCyanGrad)" stroke="#ffffff" stroke-width="1.5" />
+              <path d="M 120 46 C 100 24, 60 26, 42 40 C 62 40, 95 48, 120 65 C 145 48, 178 40, 198 40 C 180 26, 140 24, 120 46 Z" fill="url(#glossHighlight)" opacity="0.6" />
+              <rect x="116" y="24" width="8" height="180" rx="4" fill="url(#metalCyanGrad)" stroke="#ffffff" stroke-width="1.5" />
+              <circle cx="120" cy="22" r="11" fill="url(#metalCyanGrad)" stroke="#ffffff" stroke-width="2" />
+              <circle cx="117" cy="18" r="4" fill="#ffffff" opacity="0.8" />
+              <path d="M 120 68 C 85 80, 85 110, 120 120 C 155 130, 155 160, 120 170 C 100 176, 102 195, 120 200" stroke="url(#metalCyanGrad)" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M 120 68 C 155 80, 155 110, 120 120 C 85 130, 85 160, 120 170 C 140 176, 138 195, 120 200" stroke="#0284c7" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.9" />
+              <path d="M 120 68 C 85 80, 85 110, 120 120 C 155 130, 155 160, 120 170" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.7" />
+            </g>
+          </svg>
+        </div>
+        <div class="flex items-center justify-center">
+          <span class="text-2xl font-black tracking-tight text-slate-900">Rp</span>
+          <span class="text-2xl font-black tracking-tight text-brand-700">MedX</span>
+        </div>
+        <span class="text-[10px] font-bold tracking-widest uppercase text-slate-400">BD Rx Directory & Reference</span>
+      </div>
+
+      <!-- Segmented Tab Switcher -->
+      <div class="bg-slate-200/80 p-1 rounded-xl flex items-center relative mb-4">
+        <div id="tabIndicator" class="absolute top-1 left-1 bottom-1 w-[calc(50%-4px)] bg-white rounded-lg shadow-sm tab-transition"></div>
+        <button id="signInTabBtn" onclick="switchTab('signin')" class="flex-1 py-2 text-xs font-bold text-center z-10 text-brand-700 tab-transition focus:outline-none">Sign In</button>
+        <button id="registerTabBtn" onclick="switchTab('register')" class="flex-1 py-2 text-xs font-bold text-center z-10 text-slate-600 tab-transition focus:outline-none">Register</button>
+      </div>
+
+      <!-- Toast Alert Box -->
+      <div id="alertBox" class="hidden mb-3 p-3 rounded-xl text-xs font-medium bg-emerald-100 text-emerald-800 border border-emerald-200 flex items-center space-x-2 transition-all">
+        <i class="fa-solid fa-circle-check text-base"></i>
+        <span id="alertMessage">Success!</span>
+      </div>
+
+      <!-- FORMS -->
+      <div class="flex-1">
+        <!-- Sign In Form -->
+        <form id="signInForm" onsubmit="handleAuthSubmit(event, 'Sign In')" class="space-y-3.5">
+          <div class="text-left mb-1">
+            <h2 class="text-base font-bold text-slate-800">Welcome Back!</h2>
+            <p class="text-xs text-slate-500">Sign in to access your medicine database.</p>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Email or Phone Number</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400"><i class="fa-regular fa-envelope text-xs"></i></span>
+              <input type="text" required placeholder="e.g. 01700000000" class="w-full pl-9 pr-3 py-2.5 text-xs bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-700 outline-none shadow-sm text-slate-800 font-medium">
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between items-center mb-1">
+              <label class="block text-xs font-semibold text-slate-700">Password</label>
+              <a href="#" onclick="showAlert('Password reset instructions sent!')" class="text-[11px] font-semibold text-brand-700 hover:underline">Forgot?</a>
+            </div>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400"><i class="fa-solid fa-lock text-xs"></i></span>
+              <input id="signInPassword" type="password" required placeholder="••••••••" class="w-full pl-9 pr-10 py-2.5 text-xs bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-700 outline-none shadow-sm text-slate-800 font-medium">
+              <button type="button" onclick="togglePasswordVisibility('signInPassword', 'eyeIcon1')" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 focus:outline-none"><i id="eyeIcon1" class="fa-regular fa-eye text-xs"></i></button>
+            </div>
+          </div>
+          <button type="submit" class="w-full py-3 bg-brand-700 hover:bg-brand-800 text-white font-bold text-xs rounded-xl shadow-md transition-all">SIGN IN</button>
+        </form>
+
+        <!-- Register Form -->
+        <form id="registerForm" onsubmit="handleAuthSubmit(event, 'Registration')" class="space-y-3 hidden">
+          <div class="text-left mb-1">
+            <h2 class="text-base font-bold text-slate-800">Create Account</h2>
+            <p class="text-xs text-slate-500">Join the RpMedX clinical directory.</p>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Full Name</label>
+            <input type="text" required placeholder="Afif Tahsin" class="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-700 outline-none shadow-sm text-slate-800 font-medium">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Email or Phone Number</label>
+            <input type="text" required placeholder="name@example.com" class="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-700 outline-none shadow-sm text-slate-800 font-medium">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Password</label>
+            <input id="regPassword" type="password" required placeholder="Min 6 characters" class="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-700 outline-none shadow-sm text-slate-800 font-medium">
+          </div>
+          <button type="submit" class="w-full py-2.5 bg-brand-700 hover:bg-brand-800 text-white font-bold text-xs rounded-xl shadow-md transition-all mt-1">CREATE ACCOUNT</button>
+        </form>
+      </div>
+
+      <div class="mt-4 text-center text-[10px] text-slate-400">
+        <p>RpMedX BD Reference Guide © 2026</p>
+      </div>
+    </div>
+    <div class="bg-white py-2 flex justify-center items-center"><div class="w-28 h-1 bg-slate-300 rounded-full"></div></div>
+  </div>
+
+  <script>
+    function switchTab(tab) {
+      const signInForm = document.getElementById('signInForm');
+      const registerForm = document.getElementById('registerForm');
+      const tabIndicator = document.getElementById('tabIndicator');
+      const signInBtn = document.getElementById('signInTabBtn');
+      const registerBtn = document.getElementById('registerTabBtn');
+      document.getElementById('alertBox').classList.add('hidden');
+
+      if (tab === 'signin') {
+        tabIndicator.style.transform = 'translateX(0%)';
+        signInForm.classList.remove('hidden');
+        registerForm.classList.add('hidden');
+        signInBtn.className = "flex-1 py-2 text-xs font-bold text-center z-10 text-brand-700 tab-transition focus:outline-none";
+        registerBtn.className = "flex-1 py-2 text-xs font-bold text-center z-10 text-slate-600 tab-transition focus:outline-none";
+      } else {
+        tabIndicator.style.transform = 'translateX(100%)';
+        signInForm.classList.add('hidden');
+        registerForm.classList.remove('hidden');
+        registerBtn.className = "flex-1 py-2 text-xs font-bold text-center z-10 text-brand-700 tab-transition focus:outline-none";
+        signInBtn.className = "flex-1 py-2 text-xs font-bold text-center z-10 text-slate-600 tab-transition focus:outline-none";
+      }
+    }
+
+    function togglePasswordVisibility(inputId, eyeIconId) {
+      const input = document.getElementById(inputId);
+      const eyeIcon = document.getElementById(eyeIconId);
+      if (input.type === 'password') {
+        input.type = 'text';
+        eyeIcon.classList.remove('fa-eye');
+        eyeIcon.classList.add('fa-eye-slash');
+      } else {
+        input.type = 'password';
+        eyeIcon.classList.remove('fa-eye-slash');
+        eyeIcon.classList.add('fa-eye');
+      }
+    }
+
+    function showAlert(message) {
+      const alertBox = document.getElementById('alertBox');
+      document.getElementById('alertMessage').innerText = message;
+      alertBox.classList.remove('hidden');
+      setTimeout(() => { alertBox.classList.add('hidden'); }, 3500);
+    }
+
+    function handleAuthSubmit(e, actionType) {
+      e.preventDefault();
+      showAlert(`${actionType} successful! Entering RpMedX...`);
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 1500);
+    }
+  </script>
+</body>
+</html>
