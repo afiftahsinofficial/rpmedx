@@ -1,0 +1,14 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "RpMedX",
+  "orientation": "any",
+  "scope": "/rpmedx/",
+  "short_name": "RpMedx",
+  "start_url": "/rpmedx/",
+  "theme_color": "#ffffff",
+  "id": "/rpmedx/",
+  "description": "Professional medicine reference app for Bangladesh",
+  "lang": "en"
+}
